@@ -1,0 +1,233 @@
+/* General Body Styles - Black and Blue Theme */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: #121212; /* Deep charcoal gray */
+    color: #e0e0e0;
+    scroll-behavior: smooth;
+}
+
+/* Container for main content */
+.container {
+    max-width: 1000px; /* Max width for content */
+    margin: 0 auto; /* Center the container */
+    padding: 20px;
+}
+
+/* Header Section */
+header {
+    text-align: center;
+    padding: 60px 20px 40px;
+    background-color: #1a2a3a; /* Slightly lighter dark blue for header */
+    border-bottom: 2px solid #007bff; /* Blue accent line */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 3.5em; /* Larger title */
+    color: #00eaff; /* Bright blue for the main title */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for depth */
+}
+
+header p {
+    font-size: 1.3em;
+    color: #a0a0a0;
+}
+
+/* Common Section Styling */
+section {
+    padding: 40px 20px;
+    margin-bottom: 30px;
+    background-color: #1a2a3a; /* Consistent background for sections */
+    border-radius: 10px; /* Rounded corners for sections */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* Stronger shadow */
+}
+
+section h2 {
+    text-align: center;
+    border-bottom: 2px solid #007bff; /* Blue accent line */
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+    font-size: 2.5em; /* Larger section titles */
+    color: #00eaff;
+}
+
+/* About Me Section */
+.about-me-content {
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack elements vertically on small screens */
+    align-items: center; /* Center items horizontally */
+    gap: 30px; /* Space between elements */
+    padding-bottom: 20px;
+}
+
+.profile-img-container {
+    text-align: center; /* Ensures the image itself is centered within its div */
+}
+
+.profile-img-container img {
+    width: 200px; /* Set a fixed width */
+    height: 200px; /* Set a fixed height */
+    border-radius: 50%; /* Makes the image perfectly round */
+    object-fit: cover; /* Crops the image to fit without distortion */
+    border: 5px solid #00eaff; /* Bright blue border */
+    box-shadow: 0 0 15px rgba(0, 234, 255, 0.6); /* Glowing effect */
+}
+
+/* Styling for About Me text */
+.about-me-content h2 { /* Targeting the h2 within about-me-content for specificity */
+    font-size: 2em;
+    color: #00eaff;
+    margin-bottom: 10px;
+    border-bottom: none; /* Remove border from here, as section h2 already has it */
+    padding-bottom: 0;
+}
+
+.about-me-content p {
+    font-size: 1.1em;
+    text-align: center; /* Center the about me text */
+    max-width: 800px; /* Limit width for readability */
+    margin-left: auto;
+    margin-right: auto;
+    color: #c0c0c0;
+}
+
+/* Contact Info */
+.contact-info {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 1.1em;
+    color: #a0a0a0;
+}
+
+.contact-info a {
+    color: #00eaff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* Social Media Links */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 25px;
+}
+
+.social-links a {
+    color: #007bff;
+    font-size: 1.8em;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #00eaff;
+    transform: translateY(-3px);
+}
+
+/* Projects Section - Grid Layout */
+.project-grid {
+    display: grid;
+    /* Responsive grid: auto-fit creates as many columns as fit, minmax ensures min width */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px; /* Space between project cards */
+}
+
+.project-card {
+    background-color: #2a3a4a; /* Darker background for cards */
+    border-radius: 8px;
+    overflow: hidden; /* Ensures image corners are rounded with the card */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-8px); /* Lift effect on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6); /* Stronger shadow on hover */
+}
+
+.project-image-container {
+    width: 100%;
+    height: 220px; /* Fixed height for project images */
+    overflow: hidden; /* Hide overflowing parts of the image */
+}
+
+.project-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures images fill the container without distortion */
+    transition: transform 0.5s ease; /* Smooth transition for zoom effect */
+}
+
+.project-card:hover .project-image-container img {
+    transform: scale(1.05); /* Slightly zoom in on image hover */
+}
+
+.project-info {
+    padding: 20px;
+}
+
+.project-info h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.6em;
+    color: #00eaff;
+}
+
+.project-info p {
+    font-size: 1em;
+    color: #c0c0c0;
+    margin-bottom: 15px;
+}
+
+.project-info a {
+    display: inline-block; /* Allows padding and margin */
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.project-info a:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.5em;
+    }
+
+    header p {
+        font-size: 1em;
+    }
+
+    section h2 {
+        font-size: 2em;
+    }
+
+    .profile-img-container img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .about-me-content p {
+        font-size: 1em;
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr; /* Single column on small screens */
+    }
+}

@@ -1,0 +1,175 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="{% static 'css/display.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <nav class="navbar">
+    <div class="container">
+        <div class="nav-left">
+            <a href="#" class="nav-brand">El-Amin's Portfolio</a>
+            <button id="theme-toggle" title="Toggle light/dark mode">
+                <i class="fas fa-sun"></i>  <i class="fas fa-moon"></i> </button>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="#about-me">About Me</a></li>
+            <li><a href="#tools">Tools</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <button class="nav-toggle" aria-label="Toggle navigation menu">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+</nav>
+    
+    <div class="container">
+        
+        <section class="site-header">
+            <div class="header-content">
+                <h1>Driven by Data, Built with Code</h1>
+                <h5>Hi! I am</h5>
+                <h3> CARL-ABU-BAKAR EL-AMIN IGBAFE</h3>
+
+                {% if profilepic %}
+                    <img src="{{ profilepic.image.url }}" alt="Profile Picture" class="profile-image">
+                {% else %}
+                    <img src="{% static 'images/default_profile.png' %}" alt="Default Profile Picture" class="profile-image">
+                {% endif %}
+                <p>Showcasing my work, skills, and professional journey.</p>
+            </div>
+        </section>
+        
+        <section class="section about-me-section" id="about-me">
+            {% if aboutme %}
+                {% for about in aboutme %}
+                <h2>{{ about.title }}</h2>
+                <p>{{ about.description }}</p>
+                {% endfor%}
+            {% endif %}
+        </section>
+
+        <section class="section skills-section" id="tools">
+            <h2>Tools & Technologies</h2>
+            
+            <div class="skill-category">
+                <h3>Programming Languages</h3>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <i class="fab fa-python skill-icon"></i>
+                        <p>Python</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Databases</h3>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <i class="fas fa-database skill-icon"></i>
+                        <p>MySQL</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-database skill-icon"></i>
+                        <p>SQLite</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Frameworks & Libraries</h3>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <i class="fas fa-database skill-icon"></i>
+                        <p>Django</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-brain skill-icon"></i>
+                        <p>TensorFlow</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-cogs skill-icon"></i>
+                        <p>Keras</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-seedling skill-icon"></i>
+                        <p>PyTorch</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-chart-line skill-icon"></i>
+                        <p>scikit-learn</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-rocket skill-icon"></i>
+                        <p>XGBoost</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section projects-section" id="projects">
+            <h2>My Projects</h2>
+            <div class="project-grid">
+                {% if projects %}
+                    {% for project in projects %}
+                        <a href="{{ project.link }}" class="project-card" target="_blank">
+                            <div class="project-image-container">
+                                {% if project.image %}
+                                    <img src="{{ project.image.url }}" alt="{{ project.title }} thumbnail">
+                                {% endif %}
+                            </div>
+                            <div class="project-info">
+                                <h3>{{ project.title }}</h3>
+                                <p>{{ project.description }}</p>
+                            </div>
+                        </a>
+                    {% endfor %}
+                {% else %}
+                    <p>No projects found. Add projects from the Django admin!</p>
+                {% endif %}
+            </div>
+        </section>
+
+        <section class="section contact-section" id="contact">
+            <h2>Connect with Me</h2>
+            <div class="contact-links">
+                <p class="email-link">📧 Email: <a href="mailto:elamincarlabubakar@gmail.com">elamincarlabubakar@gmail@example.com</a></p>
+                {% if resume %}
+                    <a href="{{ resume.file.url }}" download="{{ resume.file.name }}" class="download-btn">
+                        Download Resume
+                    </a>
+                {% else %}
+                    <p> No resume available </p>
+                {% endif %}
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook Profile"><i class="fab fa-facebook-square"></i></a>
+                    <a href="#" aria-label="Twitter Profile"><i class="fab fa-twitter-square"></i></a>
+                    <a href="#" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+                </div>
+                <div class="drop-a-message">
+                     <form method="POST" action="{% url 'send_message' %}">
+                        {% csrf_token %}
+                        <input type="text" name="name" placeholder="Your name" required> <br>
+                        <input type="email" name="email" placeholder="Your email" required> <br>
+                        <textarea name="message" placeholder="Drop a message" rows="4" required></textarea>
+                        <button type="submit">Send</button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+        
+        <a href="#top" class="back-to-top">Back to Top</a>
+    </div>
+
+    <script src="{% static 'js/display.js' %}"></script>
+</body>
+</html>
